@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Champion Bakery · Est. 1977 · White Plains Road, Bronx</title>
+<meta name="description" content="Champion Bakery, Jamaican bakery in the Bronx since 1977. Beef patties, coco bread, hardo bread, bulla and spice bun. Order online and catering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3ede3; --surface:#fbf8f2; --ink:#1b1611; --muted:#6c6153; --line:#d9cfbf;
+  --gold:#a77a24; --gold-2:#c99a3e; --deep:#16120d; --on-deep:#efe6d6; --green:#24402d;
+  --serif:"Cormorant Garamond",Garamond,"Times New Roman",serif;
+  --sans:"Manrope","Helvetica Neue",Arial,system-ui,sans-serif;
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#110d09; --surface:#19140f; --ink:#efe6d6; --muted:#a89a85; --line:#2e261d;
+  --gold:#d2a44c; --gold-2:#e2b862; --deep:#0b0806; --on-deep:#efe6d6; --green:#8fb39a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#110d09; --surface:#19140f; --ink:#efe6d6; --muted:#a89a85; --line:#2e261d;
+  --gold:#d2a44c; --gold-2:#e2b862; --deep:#0b0806; --on-deep:#efe6d6; --green:#8fb39a; color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+.ln{fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:600}
+
+/* ---------- Intro ---------- */
+#intro{position:fixed;inset:0;z-index:100;background:#0e0a07;color:#efe6d6;display:grid;place-content:center;text-align:center;clip-path:inset(0 0 0 0);transition:clip-path 1.1s cubic-bezier(.77,0,.18,1)}
+#intro.open{clip-path:inset(0 0 100% 0)}
+.i-mask{overflow:hidden;line-height:1}
+.i-word{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(64px,13vw,170px);letter-spacing:-.01em;transform:translateY(105%);animation:rise 1.1s cubic-bezier(.2,.8,.2,1) .5s forwards}
+.i-word.it{font-style:italic;color:#d2a44c;font-size:clamp(36px,6vw,74px);animation-delay:.75s}
+@keyframes rise{to{transform:none}}
+.i-line{height:1px;background:#d2a44c;width:min(560px,70vw);margin:26px auto 18px;transform:scaleX(0);animation:line 1.2s cubic-bezier(.7,0,.2,1) 1.2s forwards}
+@keyframes line{to{transform:scaleX(1)}}
+.i-est{font-size:12px;letter-spacing:.32em;opacity:0;animation:fade .8s ease 1.9s forwards}
+@keyframes fade{to{opacity:.8}}
+.i-skip{position:absolute;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));background:none;border:0;color:#a89a85;font-size:12px;letter-spacing:.2em;cursor:pointer;text-transform:uppercase}
+
+/* ---------- Header ---------- */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:76px}
+.nav{display:flex;gap:28px}
+.nav a{text-decoration:none;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);position:relative;padding:6px 0}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .35s}
+.nav a:hover,.nav a[aria-current=page]{color:var(--ink)}
+.nav a[aria-current=page]::after,.nav a:hover::after{transform:scaleX(1)}
+.brand{text-align:center;text-decoration:none;line-height:1}
+.brand b{display:block;font-family:var(--serif);font-weight:600;font-size:28px;letter-spacing:.02em}
+.brand small{font-size:10px;letter-spacing:.32em;color:var(--gold)}
+.right{display:flex;justify-content:flex-end}
+.bag{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:13px;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--ink);padding:10px 18px;transition:background .25s,color .25s}
+.bag:hover{background:var(--ink);color:var(--bg)}
+.bag .cn{font-family:var(--serif);font-size:16px;letter-spacing:0}
+@media (max-width:820px){
+  .bar{grid-template-columns:1fr auto;height:64px}
+  .bar .nav{display:none}.brand{text-align:left}.brand b{font-size:24px}
+  .mnav{display:flex!important}
+}
+.mnav{display:none;gap:22px;overflow-x:auto;padding:0 28px 12px;border-bottom:1px solid var(--line);background:var(--bg)}
+.mnav a{text-decoration:none;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.mnav a[aria-current=page]{color:var(--ink);border-bottom:1px solid var(--gold)}
+
+/* ---------- Common ---------- */
+.view[hidden]{display:none}
+.view{animation:vin .6s ease}
+@keyframes vin{from{opacity:0}}
+section{padding:clamp(72px,10vw,140px) 0}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(40px,5.6vw,72px);line-height:1;letter-spacing:-.01em;margin:14px 0 22px}
+h2 em{color:var(--gold);font-style:italic}
+.lede{color:var(--muted);max-width:54ch;font-size:17px;margin:0 0 48px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);padding:15px 28px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .25s,color .25s}
+.btn:hover{background:transparent;color:var(--ink)}
+.btn.line{background:transparent;color:var(--ink)}
+.btn.line:hover{background:var(--ink);color:var(--bg)}
+.btn.gold{background:var(--gold-2);border-color:var(--gold-2);color:#16120d}
+.btn.gold:hover{background:transparent;color:var(--gold-2)}
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s ease var(--d,0s),transform 1s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.mk{display:block;overflow:hidden}
+.mk>span{display:block;transform:translateY(105%);transition:transform 1.1s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
+.rv.in .mk>span,.mk.in>span{transform:none}
+
+/* hero */
+.hero{padding:clamp(48px,7vw,96px) 0 clamp(64px,8vw,110px)}
+.hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.seal{max-width:360px;margin:0 auto}}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(52px,7.6vw,112px);line-height:.95;letter-spacing:-.015em;margin:18px 0 28px}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero p{color:var(--muted);font-size:18px;max-width:44ch;margin:0 0 36px}
+.ctas{display:flex;gap:14px;flex-wrap:wrap}
+.seal{position:relative;aspect-ratio:1;color:var(--gold)}
+.seal .ring{position:absolute;inset:0;animation:spin 40s linear infinite}
+.seal .ring text{fill:var(--gold);font-family:var(--sans);font-size:7.2px;letter-spacing:.38em}
+@keyframes spin{to{transform:rotate(360deg)}}
+.seal .art{position:absolute;inset:22%;width:56%;height:56%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px var(--line)}
+.draw path,.draw ellipse,.draw rect,.draw circle,.draw line{stroke-dasharray:1;stroke-dashoffset:1}
+.drawn path,.drawn ellipse,.drawn rect,.drawn circle,.drawn line{transition:stroke-dashoffset 2.4s cubic-bezier(.6,0,.2,1);stroke-dashoffset:0}
+.steamln{animation:st 3.2s ease-in-out infinite;opacity:0}
+.steamln:nth-of-type(2){animation-delay:1s}.steamln:nth-of-type(3){animation-delay:2s}
+@keyframes st{0%{opacity:0;transform:translateY(8px)}40%{opacity:.7}100%{opacity:0;transform:translateY(-16px)}}
+
+/* marquee */
+.marq{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:22px 0}
+.marq div{display:inline-block;animation:mq 50s linear infinite;font-family:var(--serif);font-style:italic;font-size:clamp(26px,3.4vw,40px);color:var(--muted)}
+.marq span{margin:0 28px}.marq i{font-style:normal;color:var(--gold);font-size:.6em;vertical-align:middle}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* midday */
+.midday{background:var(--deep);color:var(--on-deep)}
+.midday .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
+@media (max-width:900px){.midday .wrap{grid-template-columns:1fr}}
+.midday h2{color:var(--on-deep)}
+.midday p{color:#bfb19c;max-width:44ch}
+.mprice{border:1px solid #3a2f22;padding:clamp(28px,4vw,48px);text-align:center}
+.mprice .num{font-family:var(--serif);font-size:clamp(96px,14vw,170px);line-height:.9;color:#e2b862}
+.mprice .num sup{font-size:.36em;vertical-align:1.3em;margin-right:4px}
+.mprice .items{font-family:var(--serif);font-style:italic;font-size:22px;margin:10px 0 22px;color:#efe6d6}
+.status{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#bfb19c;margin-top:22px}
+.status i{width:7px;height:7px;border-radius:50%;background:#6c6153}
+.status.live i{background:#e2b862;box-shadow:0 0 12px #e2b862}
+
+/* oven */
+.oven{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+@media (max-width:900px){.oven{grid-template-columns:repeat(2,1fr)}}
+.oc{padding:34px 26px 30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.oc:nth-child(4n){border-right:0}
+@media (max-width:900px){.oc:nth-child(2n){border-right:0}.oc:nth-child(4n){border-right:0}}
+.oc img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;margin-bottom:18px;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.oc:hover img{transform:translateY(-4px)}
+.oc h3{font-family:var(--serif);font-weight:500;font-size:28px;margin:0;line-height:1.1}
+.oc p{margin:0;color:var(--muted);font-size:15px;flex:1}
+.oc .pr{font-family:var(--serif);font-size:22px;color:var(--gold);margin-top:10px}
+.oc .sz{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:baseline;margin-top:8px}
+.oc .sz span:first-child{font-size:14px;color:var(--muted)}
+.oc .sz .pr{margin-top:0}
+
+/* words */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+@media (max-width:900px){.quotes{grid-template-columns:1fr;gap:36px}}
+.q{border-top:1px solid var(--line);padding-top:26px}
+.q blockquote{margin:0 0 18px;font-family:var(--serif);font-size:24px;line-height:1.3;font-style:italic}
+.q cite{font-style:normal;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.q .smp{margin-left:10px;color:var(--gold)}
+.lr{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start;margin-top:80px;padding:44px;background:var(--surface);border:1px solid var(--line)}
+@media (max-width:900px){.lr{grid-template-columns:1fr;gap:28px;padding:28px 22px}}
+.lr h3{font-family:var(--serif);font-weight:500;font-size:36px;line-height:1.1;margin:0 0 12px}
+.lr h3 em{color:var(--gold)}
+.lr p{color:var(--muted);margin:0}
+.stars{display:flex;gap:6px;margin:4px 0 20px}
+.stars button{background:none;border:0;padding:0 2px;font-size:34px;line-height:1;color:var(--line);cursor:pointer;transition:color .2s,transform .2s}
+.stars button.on{color:var(--gold-2)}
+.stars button:hover{transform:scale(1.12)}
+.lr .note{font-size:13px;margin-top:12px}
+.press{text-align:center;margin-top:90px}
+.press p{font-family:var(--serif);font-size:clamp(34px,5vw,64px);line-height:1.05;margin:0 auto 18px;max-width:18ch}
+.press cite{font-style:normal;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+
+/* story */
+.story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end}
+@media (max-width:900px){.story .wrap{grid-template-columns:1fr}}
+.yr{font-family:var(--serif);font-size:clamp(130px,22vw,300px);line-height:.8;color:transparent;-webkit-text-stroke:1px var(--gold)}
+.story p{color:var(--muted);font-size:17px}
+
+/* menu */
+.mcat{margin-bottom:72px}
+.mcat h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(34px,4vw,48px);margin:0 0 8px;color:var(--gold)}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;column-gap:64px}
+@media (max-width:820px){.mgrid{grid-template-columns:1fr}}
+.mi{padding:22px 0;border-bottom:1px solid var(--line)}
+.mi .top{display:flex;align-items:baseline;gap:12px}
+.mi b{font-family:var(--serif);font-weight:600;font-size:24px;line-height:1.2}
+.mi .dots{flex:1;border-bottom:1px dotted var(--muted);transform:translateY(-6px);opacity:.6}
+.mi .pr{font-family:var(--serif);font-size:22px}
+.mi .low{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-top:4px}
+.mi p{margin:0;color:var(--muted);font-size:15px}
+.mi .tag{font-size:11px;letter-spacing:.18em;color:#a3361f;margin-left:8px;font-family:var(--sans)}
+.add{background:none;border:0;border-bottom:1px solid var(--gold);padding:2px 0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;white-space:nowrap;color:var(--ink)}
+.add:hover{color:var(--gold)}
+.add[disabled]{color:var(--muted);border-color:var(--line);cursor:not-allowed}
+
+/* order */
+.otabs{display:flex;gap:36px;border-bottom:1px solid var(--line);margin-bottom:40px}
+.otabs button{background:none;border:0;padding:0 0 14px;font-family:var(--serif);font-size:28px;cursor:pointer;color:var(--muted);border-bottom:1px solid transparent;margin-bottom:-1px}
+.otabs button[aria-selected=true]{color:var(--ink);border-color:var(--gold)}
+.olay{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:start}
+@media (max-width:900px){.olay{grid-template-columns:1fr}}
+.oi{display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.oi img{width:64px;height:48px;object-fit:cover;display:block;border-radius:2px}
+.oi b{display:block;font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.2}
+.oi small{color:var(--muted);font-size:14px}
+.step{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line)}
+.step button{background:none;border:0;width:36px;height:36px;font-size:18px;cursor:pointer}
+.step button:hover{color:var(--gold)}
+.step span{min-width:22px;text-align:center;font-family:var(--serif);font-size:20px}
+.panel{position:sticky;top:calc(env(safe-area-inset-top,0px) + 100px);background:var(--surface);border:1px solid var(--line);padding:32px}
+.panel h3{font-family:var(--serif);font-weight:500;font-size:32px;margin:0 0 16px}
+.lines{list-style:none;margin:0 0 10px;padding:0}
+.lines li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.empty{color:var(--muted);font-style:italic;font-family:var(--serif);font-size:19px;margin:0 0 10px}
+.tot{display:flex;justify-content:space-between;align-items:baseline;margin:16px 0 22px}
+.tot span:first-child{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.tot span:last-child{font-family:var(--serif);font-size:34px}
+label.f{display:grid;gap:6px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+input[type=text],input[type=tel],input[type=date],select,textarea{font:16px var(--sans);letter-spacing:0;text-transform:none;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);padding:10px 0;width:100%;border-radius:0}
+select{appearance:auto}
+textarea{min-height:90px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+.note{font-size:13px;color:var(--muted);margin:16px 0 0}
+.hint{font-family:var(--serif);font-size:22px;line-height:1.35;margin:0 0 24px}
+.hint b{color:var(--gold);font-weight:600}
+.range-row{display:flex;align-items:center;gap:16px}.range-row input{flex:1;accent-color:var(--gold)}.range-row output{font-family:var(--serif);font-size:24px;color:var(--ink);min-width:3ch;text-align:right}
+
+/* contact */
+.clay{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+@media (max-width:900px){.clay{grid-template-columns:1fr}}
+.info dl{margin:0;display:grid;gap:28px}
+.info dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.info dd{margin:6px 0 0;font-family:var(--serif);font-size:30px;line-height:1.15}
+.info dd a{text-decoration:none;border-bottom:1px solid var(--line)}
+.map{margin-top:40px;color:var(--muted)}
+.map svg{width:100%;height:auto;display:block}
+.map .road{color:var(--gold)}
+
+/* toast + modal */
+.toast{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom,0px));transform:translate(-50%,160%);background:var(--deep);color:var(--on-deep);padding:14px 16px 14px 22px;display:flex;gap:18px;align-items:center;z-index:60;transition:transform .5s cubic-bezier(.2,.8,.2,1);font-size:14px;max-width:calc(100vw - 32px)}
+.toast.on{transform:translate(-50%,0)}
+.toast a{color:#e2b862;text-decoration:none;font-size:12px;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
+.modal{position:fixed;inset:0;z-index:70;display:none;place-items:center;background:rgba(11,8,6,.6);padding:20px}
+.modal.on{display:grid}
+.mbox{background:var(--surface);padding:48px 40px;max-width:440px;width:100%;text-align:center;animation:vin .5s ease}
+.mbox h3{font-family:var(--serif);font-weight:500;font-size:40px;margin:0 0 10px}
+.mbox p{color:var(--muted);margin:0 0 26px}
+.mbox .ruled{width:60px;height:1px;background:var(--gold);margin:0 auto 22px}
+
+footer{background:var(--deep);color:#a89a85;padding:56px 0 calc(48px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:end}
+footer b{display:block;font-family:var(--serif);font-weight:500;font-size:40px;color:#efe6d6;line-height:1}
+footer small{font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+footer .credits{margin:28px 0 0;font-size:11px;line-height:1.6;color:#7d715f}
+footer .credits a{color:inherit}
+footer button{background:none;border:0;color:#e2b862;cursor:pointer;padding:0;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+
+@media (prefers-reduced-motion:reduce){
+  #intro{display:none}.view{animation:none}
+  .rv,.mk>span{opacity:1;transform:none;transition:none}
+  .seal .ring,.marq div,.steamln{animation:none}.steamln{opacity:.5}
+  .draw path,.draw ellipse,.draw rect,.draw circle,.draw line{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true">
+  <symbol id="l-patty" viewBox="0 0 120 90"><g class="ln"><path pathLength="1" d="M8 66 A52 52 0 0 1 112 66 Z"/><path pathLength="1" d="M16 60v6M26 60v6M36 60v6M46 60v6M56 60v6M66 60v6M76 60v6M86 60v6M96 60v6M105 61v5"/><path pathLength="1" d="M34 32q10-8 22-10M70 24q12 3 19 10"/></g></symbol>
+  <symbol id="l-coco" viewBox="0 0 120 90"><g class="ln"><path pathLength="1" d="M10 56Q10 28 60 26Q110 28 110 56Q110 72 60 72Q10 72 10 56Z"/><path pathLength="1" d="M14 54Q60 40 106 54"/></g></symbol>
+  <symbol id="l-loaf" viewBox="0 0 120 90"><g class="ln"><path pathLength="1" d="M12 46Q12 20 40 20L80 20Q108 20 108 46L108 72L12 72Z"/><path pathLength="1" d="M12 46Q60 54 108 46"/><path pathLength="1" d="M36 28q4 9 0 16M60 26q4 10 0 18M84 28q4 9 0 16"/></g></symbol>
+  <symbol id="l-bun" viewBox="0 0 120 90"><g class="ln"><rect pathLength="1" x="14" y="22" width="92" height="50" rx="12"/><path pathLength="1" d="M24 32Q60 24 96 32"/><circle pathLength="1" cx="40" cy="50" r="2.5"/><circle pathLength="1" cx="62" cy="58" r="2.5"/><circle pathLength="1" cx="80" cy="46" r="2.5"/></g></symbol>
+  <symbol id="l-bulla" viewBox="0 0 120 90"><g class="ln"><ellipse pathLength="1" cx="60" cy="46" rx="44" ry="18"/><path pathLength="1" d="M16 46v12Q16 74 60 74Q104 74 104 58V46"/></g></symbol>
+  <symbol id="l-soda" viewBox="0 0 120 90"><g class="ln"><rect pathLength="1" x="44" y="10" width="32" height="70" rx="6"/><path pathLength="1" d="M44 34h32M44 56h32"/><ellipse pathLength="1" cx="60" cy="12" rx="12" ry="3"/></g></symbol>
+  <symbol id="l-cake" viewBox="0 0 120 90"><g class="ln"><path pathLength="1" d="M16 40L100 28L104 72L20 76Z"/><path pathLength="1" d="M18 52L103 40M19 62L103.5 54"/></g></symbol>
+  <symbol id="l-combo" viewBox="0 0 120 90"><use href="#l-patty" x="0" y="20" width="84" height="63"/><use href="#l-soda" x="54" y="4" width="76" height="57"/></symbol>
+</svg>
+
+<div id="intro" aria-hidden="true">
+  <div class="i-mask"><span class="i-word">Champion</span></div>
+  <div class="i-mask"><span class="i-word it">Bakery</span></div>
+  <div class="i-line"></div>
+  <div class="i-est">EST. 1977 · WHITE PLAINS ROAD · THE BRONX</div>
+  <button class="i-skip" id="skip">Skip</button>
+</div>
+
+<header>
+  <div class="wrap bar">
+    <nav class="nav" aria-label="Main"><a href="#home">Home</a><a href="#menu">Menu</a><a href="#order">Order</a><a href="#contact">Contact</a></nav>
+    <a class="brand" href="#home"><b>Champion</b><small>BAKERY · EST. 1977</small></a>
+    <div class="right"><a class="bag" href="#order">Order <span class="cn" data-cn>0</span></a></div>
+  </div>
+  <nav class="mnav" aria-label="Main"><a href="#home">Home</a><a href="#menu">Menu</a><a href="#order">Order</a><a href="#contact">Contact</a></nav>
+</header>
+
+<main>
+<!-- ================= HOME ================= -->
+<div class="view" data-view="home">
+  <div class="hero">
+    <div class="wrap">
+      <div class="rv">
+        <span class="eyebrow">Jamaican bakery · The Bronx</span>
+        <h1><span class="mk"><span>Baked on</span></span><span class="mk"><span style="--d:.1s">White Plains Road</span></span><span class="mk"><span style="--d:.2s"><em>since 1977.</em></span></span></h1>
+        <p>Beef patties with a crust that shatters, soft coco bread, hardo loaves, bulla and spice bun. Made here every morning, the way it has been for nearly fifty years.</p>
+        <div class="ctas"><a class="btn" href="#order">Order for pickup</a><a class="btn line" href="#menu">View the menu</a></div>
+      </div>
+      <div class="seal" aria-hidden="true">
+        <svg class="ring" viewBox="0 0 200 200"><defs><path id="ringp" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><circle cx="100" cy="100" r="98" fill="none" stroke="currentColor" stroke-width=".5"/><circle cx="100" cy="100" r="78" fill="none" stroke="currentColor" stroke-width=".5"/><text><textPath href="#ringp" textLength="548" lengthAdjust="spacing">CHAMPION BAKERY · THE BRONX · ESTABLISHED 1977 · </textPath></text></svg>
+        <img class="art" id="heroArt" src="images/patty.jpg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="marq" aria-hidden="true"><div><span>Beef patties</span><i>◆</i><span>Coco bread</span><i>◆</i><span>Hardo bread</span><i>◆</i><span>Bulla</span><i>◆</i><span>Spice bun</span><i>◆</i><span>Catering</span><i>◆</i><span>Beef patties</span><i>◆</i><span>Coco bread</span><i>◆</i><span>Hardo bread</span><i>◆</i><span>Bulla</span><i>◆</i><span>Spice bun</span><i>◆</i><span>Catering</span><i>◆</i></div></div>
+
+  <section class="midday">
+    <div class="wrap">
+      <div class="rv">
+        <span class="eyebrow">Daily · 11am to 3pm</span>
+        <h2>The <em>midday</em> special</h2>
+        <p>A beef patty folded into warm coco bread, with a cold soda on the side. The lunch White Plains Road has been eating for decades.</p>
+        <span class="status" data-status><i></i><span>Checking…</span></span>
+      </div>
+      <div class="mprice rv" style="--d:.15s">
+        <div class="num"><sup>$</sup>6</div>
+        <div class="items">Beef patty · Coco bread · Soda</div>
+        <button class="btn gold" data-add="lunch">Add to order</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="rv"><span class="eyebrow">From the oven</span><h2>The <em>essentials</em></h2></div>
+      <div class="oven" id="favs"></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="rv" style="display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:48px">
+        <div><span class="eyebrow">Google reviews</span><h2 style="margin-bottom:0">In their <em>words</em></h2></div>
+        <a class="btn line" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Champion+Bakery+3978+White+Plains+Rd+Bronx+NY">All reviews on Google</a>
+      </div>
+      <div class="quotes">
+        <div class="q rv"><blockquote>“I’ve been coming since I was a kid. Patty in coco bread is still the best lunch on the block.”</blockquote><cite>Denise R.<span class="smp">Sample</span></cite></div>
+        <div class="q rv" style="--d:.1s"><blockquote>“The hardo bread is always fresh, and the bulla goes with everything.”</blockquote><cite>Marcus T.<span class="smp">Sample</span></cite></div>
+        <div class="q rv" style="--d:.2s"><blockquote>“Ordered patty trays for a party. Hot, flaky and on time. Everyone asked where they were from.”</blockquote><cite>Keisha W.<span class="smp">Sample</span></cite></div>
+      </div>
+      <div class="lr rv" id="review">
+        <div><span class="eyebrow">Leave a review</span><h3>Enjoyed your <em>visit?</em></h3><p>Tell people about it. Pick your stars, write a few words, and we'll take you straight to Google to post it.</p></div>
+        <form id="reviewForm" novalidate>
+          <div class="stars" role="radiogroup" aria-label="Your rating"><button type="button" role="radio" aria-checked="false" aria-label="1 star" data-star="1">★</button><button type="button" role="radio" aria-checked="false" aria-label="2 stars" data-star="2">★</button><button type="button" role="radio" aria-checked="false" aria-label="3 stars" data-star="3">★</button><button type="button" role="radio" aria-checked="false" aria-label="4 stars" data-star="4">★</button><button type="button" role="radio" aria-checked="false" aria-label="5 stars" data-star="5">★</button></div>
+          <label class="f">Your review<textarea id="reviewText" placeholder="What did you get? How was it?"></textarea></label>
+          <button class="btn" type="button" data-submit>Post on Google</button>
+          <p class="note">We copy your words for you. When Google opens, tap your stars and paste your review.</p>
+        </form>
+      </div>
+      <div class="press rv"><p>“The beef patties are the best in the city.”</p><cite>Ghetto Gastro</cite></div>
+    </div>
+  </section>
+
+  <section class="story" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="yr rv">1977</div>
+      <div class="rv" style="--d:.1s">
+        <span class="eyebrow">Our story</span>
+        <h2>Nearly fifty years on <em>White Plains Road</em></h2>
+        <p>Champion Bakery opened in 1977 as Coin Bakery on 224th Street, then moved up the block to 225th to serve a growing line of regulars. The recipes haven’t moved at all.</p>
+        <a class="btn line" href="#contact">Visit the bakery</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= MENU ================= -->
+<div class="view" data-view="menu" hidden>
+  <section>
+    <div class="wrap">
+      <div class="rv"><span class="eyebrow">Baked fresh daily</span><h2>The <em>menu</em></h2><p class="lede">Add anything to your order and pick it up warm.</p></div>
+      <div id="menuList"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ORDER ================= -->
+<div class="view" data-view="order" hidden>
+  <section>
+    <div class="wrap">
+      <div class="rv"><span class="eyebrow">Pickup &amp; catering</span><h2>Place an <em>order</em></h2></div>
+      <div class="otabs" role="tablist">
+        <button role="tab" aria-selected="true" data-o="pickup">Pickup</button>
+        <button role="tab" aria-selected="false" data-o="catering">Catering</button>
+      </div>
+      <div data-op="pickup">
+        <div class="olay">
+          <div id="orderList"></div>
+          <aside class="panel">
+            <h3>Your order</h3>
+            <ul class="lines" id="cartLines"></ul>
+            <p class="empty" id="cartEmpty">Nothing here yet.</p>
+            <div class="tot"><span>Total</span><span id="cartTotal">$0.00</span></div>
+            <form id="pickupForm">
+              <label class="f">Pickup time<select id="pickTime"></select></label>
+              <label class="f">Name<input type="text" required autocomplete="name"></label>
+              <label class="f">Phone<input type="tel" required autocomplete="tel"></label>
+              <button class="btn" type="button" data-submit style="width:100%">Place order</button>
+            </form>
+            <p class="note">Pay at pickup. Prices before tax.</p>
+          </aside>
+        </div>
+      </div>
+      <div data-op="catering" hidden>
+        <div class="olay">
+          <div>
+            <p class="hint" id="guestHint"></p>
+            <label class="f">Guests<span class="range-row"><input type="range" id="guests" min="10" max="200" step="5" value="40"><output id="guestsOut">40</output></span></label>
+            <div id="trayList"></div>
+          </div>
+          <aside class="panel">
+            <h3>Catering request</h3>
+            <ul class="lines" id="trayLines"></ul>
+            <p class="empty" id="trayEmpty">Add trays to see an estimate.</p>
+            <div class="tot"><span>Estimate</span><span id="trayTotal">$0.00</span></div>
+            <form id="cateringForm">
+              <label class="f">Event date<input type="date" name="date" required></label>
+              <label class="f">Pickup or delivery<select><option>Pickup</option><option>Delivery (Bronx area)</option></select></label>
+              <label class="f">Name<input type="text" required autocomplete="name"></label>
+              <label class="f">Phone<input type="tel" required autocomplete="tel"></label>
+              <label class="f">Notes<textarea placeholder="Event, spicy or mild, anything else"></textarea></label>
+              <button class="btn" type="button" data-submit style="width:100%">Send request</button>
+            </form>
+            <p class="note">Please order at least 48 hours ahead. We’ll call to confirm.</p>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= CONTACT ================= -->
+<div class="view" data-view="contact" hidden>
+  <section>
+    <div class="wrap">
+      <div class="rv"><span class="eyebrow">Visit</span><h2>Find <em>us</em></h2></div>
+      <div class="clay">
+        <div class="info rv">
+          <dl>
+            <div><dt>Address</dt><dd>3978 White Plains Rd<br>Bronx, NY 10466</dd></div>
+            <div><dt>Telephone</dt><dd><a href="tel:+17187981203">(718) 798-1203</a></dd></div>
+            <div><dt>Hours</dt><dd>Open daily<br><span style="font-size:20px;color:var(--muted)">Call for today’s hours</span></dd></div>
+            <div><dt>Subway</dt><dd>2 or 5 train to 225 St</dd></div>
+          </dl>
+          <p style="margin-top:32px"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=3978+White+Plains+Rd+Bronx+NY+10466">Get directions</a></p>
+        </div>
+        <div class="rv" style="--d:.1s">
+          <div class="map" aria-hidden="true">
+            <svg viewBox="0 0 400 260" class="draw" id="mapArt">
+              <g class="ln" style="stroke-width:1"><path pathLength="1" d="M0 70H400"/><path pathLength="1" d="M0 190H400"/><path pathLength="1" d="M90 0V260"/><path pathLength="1" d="M310 0V260"/></g>
+              <g class="ln road" style="stroke-width:2.4"><path pathLength="1" d="M200 0V260"/></g>
+              <g class="ln road" style="stroke-width:1.6"><path pathLength="1" d="M200 150c-14-16-22-26-22-38a22 22 0 0 1 44 0c0 12-8 22-22 38z"/><circle pathLength="1" cx="200" cy="112" r="7"/></g>
+              <text x="208" y="250" fill="currentColor" font-size="10" letter-spacing="2" font-family="Manrope, sans-serif">WHITE PLAINS RD</text>
+              <text x="318" y="64" fill="currentColor" font-size="9" letter-spacing="2" font-family="Manrope, sans-serif">E 226 ST</text>
+              <text x="318" y="184" fill="currentColor" font-size="9" letter-spacing="2" font-family="Manrope, sans-serif">E 225 ST</text>
+            </svg>
+          </div>
+          <form id="contactForm" style="margin-top:40px">
+            <label class="f">Name<input type="text" required autocomplete="name"></label>
+            <label class="f">Email or phone<input type="text" required></label>
+            <label class="f">Message<textarea required></textarea></label>
+            <button class="btn" type="button" data-submit>Send message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>Champion Bakery</b><small>3978 White Plains Rd · Bronx, NY · Est. 1977</small></div>
+    <small>Website by TREMAX Digital · <button id="replay">Replay intro</button></small>
+  </div>
+  <div class="wrap"><p class="credits">Photos (cropped): <a href="https://commons.wikimedia.org/wiki/File:Beef_patty_(2053394161).jpg" target="_blank" rel="noopener">Beef patty</a>: stu_spivack, CC BY-SA 2.0 · <a href="https://commons.wikimedia.org/wiki/File:Coco_bread_wrapped_beef_patty.jpg" target="_blank" rel="noopener">Lunch special</a>: Jason Lam, CC BY 2.0 · <a href="https://commons.wikimedia.org/wiki/File:Coco_bread_on_yellow_plate.jpg" target="_blank" rel="noopener">Coco bread</a>: Wikimedia Commons, CC BY 3.0 · <a href="https://commons.wikimedia.org/wiki/File:White_bread.jpg" target="_blank" rel="noopener">Hardo bread</a>: ElinorD, CC BY-SA 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Bulla_cake.jpg" target="_blank" rel="noopener">Bulla</a>: ChildofMidnight, CC BY 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Jamaican_spice_bun.jpg" target="_blank" rel="noopener">Spice bun</a>: Xaymacan, CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Carrot_Cake_-_The_Den_2025-07-23.jpg" target="_blank" rel="noopener">Carrot cake</a>: Andy Li, CC0 · <a href="https://commons.wikimedia.org/wiki/File:Tumbler_of_cola_with_ice.jpg" target="_blank" rel="noopener">Soda</a>: Simon Cousins, CC BY 2.0</p></div>
+</footer>
+
+<div class="toast" id="toast" role="status"><span id="toastMsg">Added</span><a href="#order">View order</a></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="mbox"><div class="ruled"></div><h3 id="mTitle">Thank you</h3><p id="mText"></p><button class="btn" id="mClose">Close</button></div>
+</div>
+
+<script>
+const REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const money=n=>'$'+n.toFixed(2);
+
+/* ---------- Menu (confirm remaining prices with the bakery) ---------- */
+const MENU=[
+  {id:'lunch',cat:'Midday special',name:'Lunch special',desc:'Beef patty, coco bread and a soda. 11am–3pm.',price:6,art:'combo',lunch:true},
+  {id:'beef',cat:'Patties',name:'Beef patty',desc:'Flaky golden crust, seasoned beef.',price:3.25,art:'patty',fav:true},
+  {id:'spicy',cat:'Patties',name:'Spicy beef patty',desc:'The classic, with more pepper.',price:3.25,art:'patty',hot:true},
+  {id:'chicken',cat:'Patties',name:'Chicken patty',desc:'Curry-seasoned chicken.',price:3.5,art:'patty'},
+  {id:'veg',cat:'Patties',name:'Vegetable patty',desc:'Mixed vegetables, island spices.',price:3.25,art:'patty'},
+  {id:'coco',cat:'Breads',name:'Coco bread',desc:'Soft and sweet, made to hold a patty.',price:1.75,art:'coco',fav:true},
+  {id:'hdb',cat:'Breads',name:'Hardo bread, small (40 oz)',desc:'Dense, soft Jamaican loaf, sliced and bagged.',price:5,art:'loaf',fav:true,card:'Hardo bread',size:'Small · 40 oz',sizes:['hdb','hdbl']},
+  {id:'hdbl',cat:'Breads',name:'Hardo bread, large (52 oz)',desc:'The family-size loaf, sliced and bagged.',price:7,art:'loaf',size:'Large · 52 oz'},
+  {id:'bulla',cat:'Breads',name:'Bulla, bag of 4',desc:'Four pieces per bag. Spiced molasses cake, best with cheese or butter.',price:5,art:'bulla',fav:true,card:'Bulla'},
+  {id:'bun',cat:'Breads',name:'Spice bun',desc:'Dark, rich and full of fruit.',price:7,art:'bun'},
+  {id:'cake',cat:'Sweets',name:'Carrot cake',desc:'Moist and spiced, by the slice.',price:4,art:'cake'},
+  {id:'soda',cat:'Drinks',name:'Soda',desc:'Island and classic flavors.',price:1.75,art:'soda'}
+];
+const TRAYS=[
+  {id:'t25',name:'Patty tray, 25',desc:'Mix beef, chicken and vegetable',price:75,art:'patty',p:25},
+  {id:'t50',name:'Patty tray, 50',desc:'Parties and office lunches',price:145,art:'patty',p:50},
+  {id:'t100',name:'Patty tray, 100',desc:'Large events and church functions',price:280,art:'patty',p:100},
+  {id:'cocod',name:'Coco bread, dozen',desc:'Pair with patties',price:18,art:'coco'},
+  {id:'hdbx',name:'Hardo bread, large (52 oz)',desc:'Sliced and bagged',price:7,art:'loaf'},
+  {id:'bullad',name:'Bulla, 6 bags',desc:'4 pieces per bag, sweet and spiced',price:28,art:'bulla'}
+];
+const art=a=>`<img src="images/${a}.jpg" alt="" loading="lazy" width="800" height="600">`;
+
+/* ---------- Lunch clock (New York time) ---------- */
+function nyMins(){const p=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date());return +p.find(x=>x.type==='hour').value*60+ +p.find(x=>x.type==='minute').value}
+const lunchOn=()=>{const m=nyMins();return m>=660&&m<900};
+function lunchStatus(){const m=nyMins();
+  $$('[data-status]').forEach(s=>{if(lunchOn()){const l=900-m;s.classList.add('live');s.lastElementChild.textContent=`Serving now · ${l>=60?Math.floor(l/60)+'h ':''}${l%60}m left`}else{s.classList.remove('live');s.lastElementChild.textContent=m<660?'Begins today at 11am':'Returns tomorrow at 11am'}});
+  $$('[data-add="lunch"]').forEach(b=>{b.disabled=!lunchOn();if(b.classList.contains('add'))b.textContent=lunchOn()?'Add':'11am–3pm'})}
+
+/* ---------- Review ---------- */
+/* Swap in the bakery's own review link from Google Business Profile ("Ask for reviews"),
+   e.g. https://g.page/r/XXXX/review, so Google's review box opens directly. */
+const GOOGLE_REVIEW_URL='https://www.google.com/maps/search/?api=1&query=Champion+Bakery+3978+White+Plains+Rd+Bronx+NY';
+let stars=0;
+$$('[data-star]').forEach(b=>b.addEventListener('click',()=>{stars=+b.dataset.star;
+  $$('[data-star]').forEach(x=>{x.classList.toggle('on',+x.dataset.star<=stars);x.setAttribute('aria-checked',+x.dataset.star===stars)})}));
+$('#reviewForm').addEventListener('submit',e=>{e.preventDefault();
+  const txt=$('#reviewText').value.trim();
+  if(!stars&&!txt){toast('Pick your stars or write a few words first');return}
+  window.open(GOOGLE_REVIEW_URL,'_blank','noopener');
+  if(txt&&navigator.clipboard)navigator.clipboard.writeText(txt).then(()=>toast('Review copied. Paste it on Google'),()=>{});
+  else toast('Opening Google reviews')});
+
+/* ---------- Cart ---------- */
+const cart={};
+function toast(msg){$('#toastMsg').textContent=msg;const t=$('#toast');t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2600)}
+function addItem(id,silent){if(id==='lunch'&&!lunchOn()){toast('The lunch special is served 11am–3pm');return}
+  cart[id]=(cart[id]||0)+1;renderCart();if(!silent)toast(MENU.find(x=>x.id===id).name+' added')}
+function renderCart(){const ids=Object.keys(cart);let total=0,count=0;
+  $('#cartLines').innerHTML=ids.map(k=>{const it=MENU.find(x=>x.id===k);total+=it.price*cart[k];count+=cart[k];return `<li><span>${cart[k]} × ${it.name}</span><span>${money(it.price*cart[k])}</span></li>`}).join('');
+  $('#cartEmpty').hidden=!!ids.length;$('#cartTotal').textContent=money(total);
+  $$('[data-cn]').forEach(c=>c.textContent=count);$$('[data-q]').forEach(s=>s.textContent=cart[s.dataset.q]||0)}
+
+$('#favs').innerHTML=MENU.filter(m=>m.fav).map((it,i)=>`<div class="oc rv" style="--d:${i*.08}s">${art(it.art)}<h3>${it.card||it.name}</h3><p>${it.sizes?'Jamaica hardo bread, sliced and bagged.':it.desc}</p>${it.sizes?it.sizes.map(k=>MENU.find(x=>x.id===k)).map(z=>`<div class="sz"><span>${z.size}</span><span class="pr">${money(z.price)}</span><button class="add" data-add="${z.id}">Add</button></div>`).join(''):`<span class="pr">${money(it.price)}</span><button class="add" data-add="${it.id}" style="align-self:flex-start;margin-top:12px">Add to order</button>`}</div>`).join('');
+const cats=[...new Set(MENU.map(m=>m.cat))];
+$('#menuList').innerHTML=cats.map(c=>`<div class="mcat rv"><h3>${c}</h3><div class="mgrid">${MENU.filter(m=>m.cat===c).map(it=>`<div class="mi"><div class="top"><b>${it.name}${it.hot?'<span class="tag">HOT</span>':''}</b><span class="dots"></span><span class="pr">${money(it.price)}</span></div><div class="low"><p>${it.desc}</p><button class="add" data-add="${it.id}">Add</button></div></div>`).join('')}</div></div>`).join('');
+$('#orderList').innerHTML=MENU.map(it=>`<div class="oi">${art(it.art)}<div><b>${it.name}</b><small>${money(it.price)}${it.lunch?' · 11am–3pm':''}</small></div><div class="step"><button aria-label="Remove one ${it.name}" data-minus="${it.id}">−</button><span data-q="${it.id}">0</span><button aria-label="Add one ${it.name}" data-plus="${it.id}">+</button></div></div>`).join('');
+$('#pickTime').innerHTML='<option>As soon as possible (about 15 min)</option>'+[30,45,60,90].map(n=>`<option>In ${n} minutes</option>`).join('');
+
+/* ---------- Catering ---------- */
+const trays={};
+$('#trayList').innerHTML=TRAYS.map(t=>`<div class="oi">${art(t.art)}<div><b>${t.name}</b><small>${t.desc} · ${money(t.price)}</small></div><div class="step"><button aria-label="Remove one ${t.name}" data-tm="${t.id}">−</button><span data-tq="${t.id}">0</span><button aria-label="Add one ${t.name}" data-tp="${t.id}">+</button></div></div>`).join('');
+function renderTrays(){let total=0,pat=0;const ids=Object.keys(trays);
+  $('#trayLines').innerHTML=ids.map(k=>{const t=TRAYS.find(x=>x.id===k);total+=t.price*trays[k];pat+=(t.p||0)*trays[k];return `<li><span>${trays[k]} × ${t.name}</span><span>${money(t.price*trays[k])}</span></li>`}).join('');
+  $('#trayEmpty').hidden=!!ids.length;$('#trayTotal').textContent=money(total);$$('[data-tq]').forEach(s=>s.textContent=trays[s.dataset.tq]||0);
+  const g=+$('#guests').value;$('#guestsOut').textContent=g;
+  $('#guestHint').innerHTML=`For <b>${g} guests</b>, plan on about <b>${g*2} patties</b>.`+(ids.length?` You have ${pat} so far.`:'')}
+$('#guests').addEventListener('input',renderTrays);
+
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-add]');if(a&&!a.disabled)addItem(a.dataset.add);
+  const p=e.target.closest('[data-plus]');if(p)addItem(p.dataset.plus,true);
+  const m=e.target.closest('[data-minus]');if(m){const k=m.dataset.minus;cart[k]=Math.max(0,(cart[k]||0)-1);if(!cart[k])delete cart[k];renderCart()}
+  const tp=e.target.closest('[data-tp]');if(tp){trays[tp.dataset.tp]=(trays[tp.dataset.tp]||0)+1;renderTrays()}
+  const tm=e.target.closest('[data-tm]');if(tm){const k=tm.dataset.tm;trays[k]=Math.max(0,(trays[k]||0)-1);if(!trays[k])delete trays[k];renderTrays()}
+});
+$$('.otabs button').forEach(b=>b.addEventListener('click',()=>{$$('.otabs button').forEach(x=>x.setAttribute('aria-selected',x===b));$$('[data-op]').forEach(p=>p.hidden=p.dataset.op!==b.dataset.o)}));
+$('[name=date]').min=new Date(Date.now()+2*864e5).toISOString().slice(0,10);
+
+/* ---------- Forms (demo: connect Square, Toast or Formspree when live) ---------- */
+function done(t,x){$('#mTitle').textContent=t;$('#mText').textContent=x;$('#modal').classList.add('on');$('#mClose').focus()}
+$('#mClose').addEventListener('click',()=>$('#modal').classList.remove('on'));
+$('#pickupForm').addEventListener('submit',e=>{e.preventDefault();if(!Object.keys(cart).length){toast('Add something to your order first');return}
+  done('Order received',`Order #${Math.floor(1000+Math.random()*9000)}, ${$('#cartTotal').textContent}. ${$('#pickTime').value}. Pay at pickup.`);for(const k in cart)delete cart[k];renderCart();e.target.reset()});
+$('#cateringForm').addEventListener('submit',e=>{e.preventDefault();done('Request sent','We’ll call within one business day to confirm your catering order.');e.target.reset()});
+$('#contactForm').addEventListener('submit',e=>{e.preventDefault();done('Message sent','Thank you. We’ll be in touch soon.');e.target.reset()});
+
+/* ---------- Reveal + line drawing ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add(e.target.classList.contains('draw')?'drawn':'in');io.unobserve(e.target)}}),{threshold:.15});
+function observe(){$$('.rv:not(.in),.draw:not(.drawn)').forEach(el=>io.observe(el))}
+
+/* ---------- Routing ---------- */
+const VIEWS=['home','menu','order','contact'];
+function route(x){let v=typeof x==='string'?x:location.hash.slice(1);if(!VIEWS.includes(v))v='home';
+  $$('[data-view]').forEach(s=>s.hidden=s.dataset.view!==v);
+  $$('.nav a,.mnav a').forEach(a=>a.getAttribute('href')==='#'+v?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+  scrollTo(0,0);observe()}
+addEventListener('hashchange',()=>route());
+addEventListener('popstate',()=>route());
+/* Handle page links directly so navigation works inside any preview frame */
+document.addEventListener('click',e=>{
+  if(e.defaultPrevented)return;
+  const a=e.target.closest('a[href^="#"]');if(!a)return;
+  const v=a.getAttribute('href').slice(1);if(!VIEWS.includes(v))return;
+  e.preventDefault();
+  if(location.hash!=='#'+v){try{history.pushState(null,'','#'+v)}catch(_){}}
+  route(v);
+});
+/* Submit buttons: validate, then run the form's handler without a real page submit */
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-submit]');if(!b)return;
+  const f=b.closest('form');if(!f||!f.reportValidity())return;
+  f.dispatchEvent(new Event('submit',{cancelable:true}));
+});
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Enter'||e.target.tagName==='TEXTAREA')return;
+  const f=e.target.closest&&e.target.closest('form');if(!f)return;
+  e.preventDefault();const b=f.querySelector('[data-submit]');if(b)b.click();
+});
+
+/* ---------- Intro ---------- */
+(function(){const intro=$('#intro');let t;
+  function close(){clearTimeout(t);intro.classList.add('open');setTimeout(()=>intro.style.display='none',1150);try{sessionStorage.setItem('cb2Intro','1')}catch(e){}}
+  function play(){intro.style.display='grid';intro.classList.remove('open');intro.querySelectorAll('.i-word,.i-line,.i-est').forEach(el=>{el.style.animation='none';void el.offsetWidth;el.style.animation=''});t=setTimeout(close,3300)}
+  $('#skip').addEventListener('click',close);
+  $('#replay').addEventListener('click',()=>{if(!REDUCE){scrollTo(0,0);play()}});
+  let seen=false;try{seen=sessionStorage.getItem('cb2Intro')==='1'}catch(e){}
+  if(REDUCE||seen)intro.style.display='none';else play();
+})();
+
+route();renderCart();renderTrays();lunchStatus();setInterval(lunchStatus,30000);
+</script>
+</body>
+</html>
